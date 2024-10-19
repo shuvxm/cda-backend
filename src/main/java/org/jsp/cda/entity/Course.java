@@ -25,6 +25,6 @@ public class Course
 	@ManyToOne
 	private Department department;
 	@ManyToOne
-	private Faculty faculty_id;
+	private Faculty faculty;
 
 }

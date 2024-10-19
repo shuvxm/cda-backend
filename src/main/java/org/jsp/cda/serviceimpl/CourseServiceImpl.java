@@ -1,7 +1,11 @@
 package org.jsp.cda.serviceimpl;
 
 import org.jsp.cda.dao.CourseDao;
+import org.jsp.cda.dao.DepartmentDao;
+import org.jsp.cda.dao.FacultyDao;
 import org.jsp.cda.entity.Course;
+import org.jsp.cda.entity.Department;
+import org.jsp.cda.entity.Faculty;
 import org.jsp.cda.exceptionclasses.InvalidCourseIdException;
 import org.jsp.cda.exceptionclasses.NoCoursesFoundException;
 import org.jsp.cda.responsestructure.ResponseStructure;
@@ -19,6 +23,14 @@ public class CourseServiceImpl implements CourseService
 {
     @Autowired
     private CourseDao courseDao;
+
+    @Autowired
+    private FacultyDao facultyDao;
+
+    @Autowired
+    private DepartmentDao departmentDao;
+
+
 
     @Override
     public ResponseEntity<?> saveCourse(Course course) {
@@ -48,5 +60,43 @@ public class CourseServiceImpl implements CourseService
         courseDao.findCourseById(id);
 
         return null;
+    }
+
+    @Override
+    public ResponseEntity<?> setFacultyToCourse(int cid, int fid) {
+
+        Optional<Faculty> optional1 = facultyDao.findFacultyById(fid);
+        Optional<Course> optional2 = courseDao.findCourseById(cid);
+
+        if(optional1.isEmpty())
+            throw NoCoursesFoundException.builder().message("No faculty found.").build();
+
+        if(optional2.isEmpty())
+            throw NoCoursesFoundException.builder().message("No courses found.").build();
+
+        Faculty faculty= optional1.get();
+        Course course = optional2.get();
+        course.setFaculty(faculty);
+
+        Course saveCourse = courseDao.saveCourse(course);
+        return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Faculty has set to Course successfully.").body(saveCourse).build());
+    }
+
+    @Override
+    public ResponseEntity<?> setDepartmentToCourse(int cid, int did) {
+        Optional<Department> optional1 = departmentDao.findDepartmentById(did);
+        Optional<Course> optional2 = courseDao.findCourseById(cid);
+        if(optional1.isEmpty())
+            throw NoCoursesFoundException.builder().message("No department found.").build();
+
+        if(optional2.isEmpty())
+            throw NoCoursesFoundException.builder().message("No courses found.").build();
+
+        Department department = optional1.get();
+        Course course = optional2.get();
+        course.setDepartment(department);
+
+        Course saveCourse = courseDao.saveCourse(course);
+        return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Department has set to Course successfully.").body(saveCourse).build());
     }
 }

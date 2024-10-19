@@ -4,10 +4,7 @@ import org.jsp.cda.entity.Student;
 import org.jsp.cda.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/students")
@@ -21,5 +18,11 @@ public class StudentController {
     {
         return studentService.saveStudent(student);
     }
+
+    @PatchMapping(value = "/department/{sid}/{did}")
+    public ResponseEntity<?> setDepartmentToStudent(@PathVariable int sid, @PathVariable int did){
+        return studentService.setDepartmentToStudent(sid,did);
+    }
+
 
 }

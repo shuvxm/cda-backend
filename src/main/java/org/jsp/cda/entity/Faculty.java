@@ -19,13 +19,17 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Faculty 
 {
+	@Id
+	private int id;
+
 	@OneToOne
 	@MapsId
-	@Id
-	private User user_id;
+	private User user;
+
+	private String photo;
 	
 	@ManyToOne
-	private Department department_id;
+	private Department department;
 	
 	private LocalTime officeHours;
 	

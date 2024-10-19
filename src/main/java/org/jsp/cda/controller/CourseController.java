@@ -1,10 +1,15 @@
 package org.jsp.cda.controller;
 
 import org.jsp.cda.entity.Course;
+import org.jsp.cda.entity.Faculty;
+import org.jsp.cda.repository.CourseRepository;
+import org.jsp.cda.repository.FacultyRepository;
 import org.jsp.cda.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/courses")
@@ -12,6 +17,10 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private FacultyRepository facultyRepository;
+
 
     @PostMapping
     public ResponseEntity<?> saveCourse(@RequestBody Course course)
@@ -33,4 +42,16 @@ public class CourseController {
     {
         return courseService.updateCourseById(id,course);
     }
+
+    @PatchMapping(value = "/faculty/{cid}/{fid}")
+    public ResponseEntity<?> setFacultyToCourse(@PathVariable int cid, @PathVariable int fid)
+    {
+        return courseService.setFacultyToCourse(cid,fid);
+    }
+
+    @PatchMapping(value = "/department/{cid}/{did}")
+    public ResponseEntity<?> setDepartmentToCourse(@PathVariable int cid, @PathVariable int did){
+        return courseService.setDepartmentToCourse(cid,did);
+    }
+
 }

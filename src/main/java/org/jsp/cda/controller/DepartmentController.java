@@ -28,7 +28,7 @@ public class DepartmentController
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> findDepartmentsById(@PathVariable int id)
 	{
-		return service.findDepartmentsById(id);
+		return service.findDepartmentById(id);
 	}
 	
 	@DeleteMapping(value = "/{id}")

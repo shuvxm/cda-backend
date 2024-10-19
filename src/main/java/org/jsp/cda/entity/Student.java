@@ -17,12 +17,14 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Student 
 {
+	@Id
+	private int id;
+
 	@OneToOne
 	@MapsId
-	@Id
 	private User user_id;
 	@ManyToOne
-	private Department  department_id;
+	private Department  department;
 	private int yearOFStudying;
 	
 	

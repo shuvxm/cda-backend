@@ -12,4 +12,8 @@ public interface CourseService {
     ResponseEntity<?> findAllCourses();
 
     ResponseEntity<?> updateCourseById(int id, Course course);
+
+    ResponseEntity<?> setFacultyToCourse(int cid, int fid);
+
+    ResponseEntity<?> setDepartmentToCourse(int cid, int did);
 }

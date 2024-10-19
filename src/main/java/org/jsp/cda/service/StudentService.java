@@ -6,4 +6,6 @@ import org.springframework.http.ResponseEntity;
 public interface StudentService {
 
     ResponseEntity<?> saveStudent(Student student);
+
+    ResponseEntity<?> setDepartmentToStudent(int sid, int did);
 }

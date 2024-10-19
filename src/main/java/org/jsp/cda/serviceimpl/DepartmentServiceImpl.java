@@ -35,7 +35,7 @@ public class DepartmentServiceImpl implements DepartmentService
 	}
 
 	@Override
-	public ResponseEntity<?> findDepartmentsById(int id) 
+	public ResponseEntity<?> findDepartmentById(int id)
 	{
 		Optional<Department> optional=dao.findDepartmentById(id);
 		if(optional.isEmpty())
