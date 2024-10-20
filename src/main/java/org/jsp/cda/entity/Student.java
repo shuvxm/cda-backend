@@ -22,7 +22,7 @@ public class Student
 
 	@OneToOne
 	@MapsId
-	private User user_id;
+	private User user;
 	@ManyToOne
 	private Department  department;
 	private int yearOFStudying;

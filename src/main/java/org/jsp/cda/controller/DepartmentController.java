@@ -37,10 +37,10 @@ public class DepartmentController
 		return service.deleteDepartmentsById(id);
 	}
 
-	@PutMapping(value = "/{id}")
-	public ResponseEntity<?> updateDepartmentById(@PathVariable int id, @RequestBody Department department)
-	{
-		return service.updateDepartmentById(id, department);
-	}
+//	@PutMapping(value = "/{id}")
+//	public ResponseEntity<?> updateDepartmentById(@PathVariable int id, @RequestBody Department department)
+//	{
+//		return service.updateDepartmentById(id, department);
+//	}
 
 }

@@ -30,8 +30,10 @@ public class DepartmentServiceImpl implements DepartmentService
 	@Override
 	public ResponseEntity<?> findAllDepartments() 
 	{
-		List<Department> allDepartments=dao.findAllDepartments();
-		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Department Saved successfully.").body(allDepartments).build()) ;
+		List<Department> departments=dao.findAllDepartments();
+		if(departments.isEmpty())
+			throw InvalidDepartmentIdException.builder().message("Invalid ID. Unable to find department.").build();
+		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("All Departments fetched successfully.").body(departments).build()) ;
 	}
 
 	@Override
@@ -41,7 +43,7 @@ public class DepartmentServiceImpl implements DepartmentService
 		if(optional.isEmpty())
 			throw InvalidDepartmentIdException.builder().message("Invalid ID. Unable to find.").build();
 		Department department = optional.get();
-		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Department found Successfully by id..").body(department).build()) ;
+		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Department found Successfully.").body(department).build()) ;
 	}
 
 	@Override
@@ -52,17 +54,15 @@ public class DepartmentServiceImpl implements DepartmentService
 			throw InvalidDepartmentIdException.builder().message("Invalid Department id.").build();
 		}
 		dao.deleteDepartment(id);
-		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Department deleted Successfully by id..").build()) ;
+		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Department deleted Successfully.").build()) ;
 	}
 
-	@Override
-	public ResponseEntity<?> updateDepartmentById(int id, Department department)
-	{
-		Optional<Department> optional = dao.findDepartmentById(id);
-
-
-
-		return null;
-	}
+//	@Override
+//	public ResponseEntity<?> updateDepartmentById(int id, Department department)
+//	{
+//		Optional<Department> optional = dao.findDepartmentById(id);
+//
+//		return null;
+//	}
 
 }

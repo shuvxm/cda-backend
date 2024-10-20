@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao
 	}
 
 	@Override
-	public List<User> findAllUser() {
+	public List<User> findAllUsers() {
 		return userRepository.findAll();
 	}
 

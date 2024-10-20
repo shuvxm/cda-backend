@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface UserService {
     ResponseEntity<?> saveUser(User user);
-    ResponseEntity<?> findAll();
+    ResponseEntity<?> findAllUsers();
     ResponseEntity<?> findUserById(int id);
 	ResponseEntity<?> updateRoleToStudent(int id);
 

@@ -30,8 +30,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ResponseEntity<?> findAll() {
-		List<User> li=dao.findAllUser();
+	public ResponseEntity<?> findAllUsers() {
+		List<User> li=dao.findAllUsers();
 		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Found All users").body(li).build());
 	}
 

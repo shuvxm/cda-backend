@@ -21,14 +21,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @PostMapping(value = "/login")
+    public ResponseEntity<?> login(@RequestBody AuthUser authUser){
+        return userService.login(authUser);
+    }
+
+
     @PostMapping
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         return userService.saveUser(user);
     }
 
     @GetMapping
-    public ResponseEntity<?> findUsers() {
-        return userService.findAll();
+    public ResponseEntity<?> findAllUsers() {
+        return userService.findAllUsers();
     }
 
     @GetMapping(value = "/{id}")
@@ -37,15 +43,8 @@ public class UserController {
     }
     
     @PutMapping(value = "/{id}/student")
-    public ResponseEntity<?> updateRoleToStudent(@PathVariable int id)
-    {
+    public ResponseEntity<?> updateRoleToStudent(@PathVariable int id) {
     	return userService.updateRoleToStudent(id);
     }
-
-    @PostMapping(value = "/login")
-    public ResponseEntity<?> login(@RequestBody AuthUser authUser){
-        return userService.login(authUser);
-    }
-    
 }
 

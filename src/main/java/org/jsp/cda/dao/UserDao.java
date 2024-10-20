@@ -12,7 +12,7 @@ public interface UserDao
 
 	User saveUser(User user);
 
-	List<User> findAllUser();
+	List<User> findAllUsers();
 
 	Optional<User> findUserById(int id);
 

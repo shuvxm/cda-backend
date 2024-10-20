@@ -17,7 +17,7 @@ public interface DepartmentService
 	ResponseEntity<?> deleteDepartmentsById(int id);
 
 
-	ResponseEntity<?> updateDepartmentById(int id, Department department);
+//	ResponseEntity<?> updateDepartmentById(int id, Department department);
 
 
 }
