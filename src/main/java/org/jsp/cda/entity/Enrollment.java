@@ -18,10 +18,10 @@ public class Enrollment
 	private int id;
 	
 	@ManyToOne
-	private Student student_id;
+	private Student student;
 	
 	@ManyToOne
-	private Course course_id;
+	private Course course;
 	
 
 }

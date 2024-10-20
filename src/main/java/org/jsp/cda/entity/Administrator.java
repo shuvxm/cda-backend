@@ -19,7 +19,7 @@ public class Administrator {
 	@OneToOne
 	@MapsId
 	@Id
-	private User user_id;
+	private User user;
 	@ManyToOne
 	private Department department;
 

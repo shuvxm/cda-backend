@@ -19,6 +19,16 @@ public class StudentController {
         return studentService.saveStudent(student);
     }
 
+    @GetMapping
+    public ResponseEntity<?> findAllStudents(){
+        return studentService.findAllStudents();
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<?> findStudentById(@PathVariable int id){
+        return studentService.findStudentById(id);
+    }
+
     @PatchMapping(value = "/department/{sid}/{did}")
     public ResponseEntity<?> setDepartmentToStudent(@PathVariable int sid, @PathVariable int did){
         return studentService.setDepartmentToStudent(sid,did);
