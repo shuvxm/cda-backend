@@ -1,19 +1,15 @@
 package org.jsp.cda.controller;
 
-import org.jsp.cda.dao.UserDao;
-import org.jsp.cda.entity.Department;
+
 import org.jsp.cda.entity.Faculty;
-import org.jsp.cda.entity.User;
-import org.jsp.cda.repository.DepartmentRepository;
-import org.jsp.cda.repository.FacultyRepository;
-import org.jsp.cda.service.DepartmentService;
+
 import org.jsp.cda.service.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalTime;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping(value = "/faculties")
@@ -27,10 +23,19 @@ public class FacultyController {
         return facultyService.saveFaculty(faculty, uid);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<?> findFacultyById(@PathVariable int id){
+        return facultyService.findFacultyById(id);
+    }
+    @GetMapping
+    public ResponseEntity<?> findAllFaculties(){
+        return facultyService.findAllFaculties();
+    }
+
     @PatchMapping(value = "/department/{fid}/{did}")
     public ResponseEntity<?> setDepartmentToFaculty(
-            @PathVariable int fid,
-            @PathVariable int did)
+            @PathVariable(name = "fid") int fid,
+            @PathVariable(name = "did") int did)
     {
         return facultyService.assignDepartmentToFaculty(fid, did);
     }

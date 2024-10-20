@@ -8,6 +8,7 @@ import org.jsp.cda.entity.Faculty;
 import org.jsp.cda.entity.User;
 import org.jsp.cda.exceptionclasses.InvalidCourseIdException;
 import org.jsp.cda.exceptionclasses.InvalidUserIdException;
+import org.jsp.cda.exceptionclasses.NoFacultyFoundException;
 import org.jsp.cda.responsestructure.ResponseStructure;
 import org.jsp.cda.service.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -55,6 +57,16 @@ public class FacultyServiceImpl implements FacultyService {
         Faculty faculty = optional.get();
         return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("faculty found successfully.").body(faculty).build());
     }
+
+
+    @Override
+    public ResponseEntity<?> findAllFaculties() {
+        List<Faculty> faculties = facultyDao.findAllFaculties();
+        if(faculties.isEmpty())
+            throw NoFacultyFoundException.builder().message("No such faculty found").build();
+        return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("All faculties found successfully.").body(faculties).build());
+    }
+
     @Override
     public ResponseEntity<?> assignDepartmentToFaculty(int fid, int did) {
 
@@ -97,4 +109,6 @@ public class FacultyServiceImpl implements FacultyService {
 
         return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("office hours has updated to faculty").body(faculty).build());
     }
+
+
 }

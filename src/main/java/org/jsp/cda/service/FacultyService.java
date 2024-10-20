@@ -14,4 +14,6 @@ public interface FacultyService {
     ResponseEntity<?> assignDepartmentToFaculty(int fid, int did);
 
     ResponseEntity<?> setOfficeHours(int fid, LocalTime officeHours);
+
+    ResponseEntity<?> findAllFaculties();
 }

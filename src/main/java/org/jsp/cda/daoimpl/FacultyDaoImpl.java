@@ -6,6 +6,7 @@ import org.jsp.cda.repository.FacultyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,5 +23,10 @@ public class FacultyDaoImpl implements FacultyDao
     @Override
     public Optional<Faculty> findFacultyById(int id) {
         return facultyRepository.findById(id);
+    }
+
+    @Override
+    public List<Faculty> findAllFaculties() {
+        return facultyRepository.findAll();
     }
 }

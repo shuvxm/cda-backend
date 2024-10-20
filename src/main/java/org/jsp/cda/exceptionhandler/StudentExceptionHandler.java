@@ -12,6 +12,6 @@ public class StudentExceptionHandler {
 
     @ExceptionHandler(NoStudentFoundException.class)
     public ResponseEntity<?> noStudentFoundExceptionHandler(NoStudentFoundException e){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ResponseStructure.builder().status(HttpStatus.NOT_FOUND.value()).message("No such name of Student found in db.").body(e.getMessage()).build());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ResponseStructure.builder().status(HttpStatus.NOT_FOUND.value()).message("No such Student found in db.").body(e.getMessage()).build());
     }
 }
