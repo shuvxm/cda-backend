@@ -6,6 +6,9 @@ import org.jsp.cda.repository.EnrollmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class EnrollmentDaoImpl implements EnrollmentDao {
 
@@ -16,5 +19,15 @@ public class EnrollmentDaoImpl implements EnrollmentDao {
     @Override
     public Enrollment saveEnrollment(Enrollment enrollment) {
         return enrollmentRepository.save(enrollment);
+    }
+
+    @Override
+    public Optional<Enrollment> findEnrollmentById(int id) {
+        return enrollmentRepository.findById(id);
+    }
+
+    @Override
+    public List<Enrollment> findAllEnrollments() {
+        return enrollmentRepository.findAll();
     }
 }
