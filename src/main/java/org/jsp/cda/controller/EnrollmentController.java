@@ -20,7 +20,12 @@ public class EnrollmentController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findEnrollmentById(@PathVariable int id){
-        return null;
+        return enrollmentService.findEnrollmentById(id);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> findAllEnrollments(){
+        return enrollmentService.findAllEnrollments();
     }
 
 
