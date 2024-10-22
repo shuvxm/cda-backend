@@ -22,6 +22,16 @@ public class EnrollmentDaoImpl implements EnrollmentDao {
     }
 
     @Override
+    public List<Enrollment> findEnrollmentsByStudentId(int sid) {
+        return enrollmentRepository.findEnrollmentsByStudentId(sid);
+    }
+
+    @Override
+    public List<Enrollment> findEnrollmentByCourseId(int cid) {
+        return enrollmentRepository.findEnrollmentByCourseId(cid);
+    }
+
+    @Override
     public Optional<Enrollment> findEnrollmentById(int id) {
         return enrollmentRepository.findById(id);
     }
