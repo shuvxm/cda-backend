@@ -13,4 +13,8 @@ public interface EnrollmentDao {
     Optional<Enrollment> findEnrollmentById(int id);
 
     List<Enrollment> findAllEnrollments();
+
+    List<Enrollment> findEnrollmentsByStudentId(int sid);
+
+    List<Enrollment> findEnrollmentByCourseId(int cid);
 }
