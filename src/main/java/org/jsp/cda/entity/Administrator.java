@@ -16,9 +16,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Administrator {
+	@Id
+	private int id;
 	@OneToOne
 	@MapsId
-	@Id
 	private User user;
 	@ManyToOne
 	private Department department;
