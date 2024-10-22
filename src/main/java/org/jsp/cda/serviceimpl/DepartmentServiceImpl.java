@@ -23,8 +23,8 @@ public class DepartmentServiceImpl implements DepartmentService
 	@Override
 	public ResponseEntity<?> saveDepartment( Department department)
 	{
-		Department dept=dao.saveDepartment(department);
-		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Department Saved..").build()) ;
+		department=dao.saveDepartment(department);
+		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Department Saved..").body(department).build()) ;
 	}
 
 	@Override
