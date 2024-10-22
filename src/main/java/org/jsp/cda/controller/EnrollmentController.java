@@ -18,6 +18,16 @@ public class EnrollmentController {
         return enrollmentService.saveEnrollment(cid,sid);
     }
 
+    @GetMapping(value = "/student/{sid}")
+    public ResponseEntity<?> findEnrollmentByStudentId(@PathVariable int sid){
+        return enrollmentService.findEnrollmentByStudentId(sid);
+    }
+
+    @GetMapping(value = "/course/{cid}")
+    public ResponseEntity<?> findEnrollmentByCourseId(@PathVariable int cid){
+        return enrollmentService.findEnrollmentByCourseId(cid);
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findEnrollmentById(@PathVariable int id){
         return enrollmentService.findEnrollmentById(id);
