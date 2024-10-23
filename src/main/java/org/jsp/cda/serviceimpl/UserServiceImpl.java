@@ -8,6 +8,7 @@ import org.jsp.cda.entity.User;
 import org.jsp.cda.exceptionclasses.InvalidCredentialsException;
 import org.jsp.cda.responsestructure.ResponseStructure;
 import org.jsp.cda.utility.AuthUser;
+import org.jsp.cda.utility.Helper;
 import org.jsp.cda.utility.UserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,13 +20,21 @@ import org.jsp.cda.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserDao dao;
 
+	@Autowired
+	private Helper helper;
+
 	@Override
 	public ResponseEntity<?> saveUser(User user) {
+
+		String email = user.getEmail();
 		user.setStatus(UserStatus.IN_ACTIVE);
 		user =dao.saveUser(user);
+
+		helper.sendMail(email);
 		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("User Successfully saved").body(user).build());
 	}
 
