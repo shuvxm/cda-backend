@@ -6,8 +6,7 @@ import org.jsp.cda.dao.UserDao;
 import org.jsp.cda.entity.Department;
 import org.jsp.cda.entity.Student;
 import org.jsp.cda.entity.User;
-import org.jsp.cda.exceptionclasses.NoStudentFoundException;
-import org.jsp.cda.exceptionclasses.NoUserFoundException;
+import org.jsp.cda.exceptionclasses.*;
 import org.jsp.cda.responsestructure.ResponseStructure;
 import org.jsp.cda.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,9 +67,9 @@ public class StudentServiceImpl implements StudentService {
         Optional<Department> optional2 = departmentDao.findDepartmentById(did);
 
         if(optional1.isEmpty())
-            throw NoUserFoundException.builder().message("Not found student").build();
+            throw InvalidStudentIdException.builder().message("Not found student").build();
         if(optional2.isEmpty())
-            throw NoUserFoundException.builder().message("Not found department").build();
+            throw InvalidDepartmentIdException.builder().message("Not found department").build();
 
         Student student = optional1.get();
         Department department = optional2.get();
@@ -84,7 +83,7 @@ public class StudentServiceImpl implements StudentService {
     public ResponseEntity<?> uploadPhoto(int sid, MultipartFile file) {
         Optional<Student> optional = studentDao.findStudentById(sid);
         if(optional.isEmpty())
-            throw NoStudentFoundException.builder().message(" Picture file is not uploaded successfully").build();
+            throw InvalidStudentIdException.builder().message(" Picture file is not uploaded successfully").build();
 
         Student student = optional.get();
 
