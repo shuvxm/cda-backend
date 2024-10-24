@@ -16,5 +16,4 @@ public interface StudentService {
 
     ResponseEntity<?> uploadPhoto(int sid, MultipartFile file);
 
-//    ResponseEntity<?> saveStudent(int uid, Student student);
 }
