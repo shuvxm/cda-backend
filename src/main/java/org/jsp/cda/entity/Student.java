@@ -25,6 +25,8 @@ public class Student
 	private User user;
 	@ManyToOne
 	private Department  department;
+
+	private String photo;
 	private int yearOFStudying;
 	
 	

@@ -28,19 +28,19 @@ public class User
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(nullable = false, unique = true)
+//	@Column(nullable = false, unique = true)
 	private String username;
 
-	@Column(nullable = false)
+//	@Column(nullable = false)
 	private String password;
 
-	@Column(nullable = false)
+//	@Column(nullable = false)
 	private String name;
 	
-	@Column(unique = true)
+//	@Column(unique = true)
 	private String email;
 	
-	@Column(unique = true)
+//	@Column(unique = true)
 	private long phone;
 
 	// @Enumerated(EnumType.ORDINAL)
