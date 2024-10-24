@@ -11,13 +11,15 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+//http://localhost:8080/swagger-ui/index.html - documentation link
+
 @RestController
 @RequestMapping(value = "/students")
 public class StudentController {
 
     @Autowired
     private StudentService studentService;
-//    http://localhost:8080/swagger-ui/index.html
+
     @Operation(summary = "To Create the Student through user id", description = "This API will accept the request body of Student Entity and accept the user id to ")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "All"),
     			@ApiResponse(responseCode = "200", description = "All")} )
