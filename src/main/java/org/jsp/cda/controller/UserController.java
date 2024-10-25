@@ -1,6 +1,7 @@
 package org.jsp.cda.controller;
 
 import org.jsp.cda.entity.User;
+import org.jsp.cda.utility.AuthOTP;
 import org.jsp.cda.utility.AuthUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -46,5 +47,11 @@ public class UserController {
     public ResponseEntity<?> updateRoleToStudent(@PathVariable int id) {
     	return userService.updateRoleToStudent(id);
     }
+
+    @PostMapping("/user/verify")
+    public ResponseEntity<?> verifyOTP(@RequestBody AuthOTP authOTP){
+        return userService.verifyOTP(authOTP);
+    }
+
 }
 
