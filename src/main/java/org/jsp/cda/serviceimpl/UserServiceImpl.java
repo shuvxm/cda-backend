@@ -7,6 +7,7 @@ import org.jsp.cda.dao.UserDao;
 import org.jsp.cda.entity.User;
 import org.jsp.cda.exceptionclasses.InvalidCredentialsException;
 import org.jsp.cda.responsestructure.ResponseStructure;
+import org.jsp.cda.utility.AuthOTP;
 import org.jsp.cda.utility.AuthUser;
 import org.jsp.cda.utility.Helper;
 import org.jsp.cda.utility.UserStatus;
@@ -73,6 +74,22 @@ public class UserServiceImpl implements UserService {
 			throw InvalidCredentialsException.builder().message("Invalid Username and password...").build();
 //		User user = optional.get();
 		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("User verification successfully").body(optional.get()).build());
+	}
+
+	@Override
+	public ResponseEntity<?> verifyOTP(AuthOTP authOTP) {
+		Optional<User> optional = dao.findUserById(authOTP.getUid());
+
+		// do validation here
+//		if(optional.isEmpty())
+//			throw
+
+		User user = optional.get();
+//		if(user.getOtp() != authOTP.getOtp())
+//			throw
+		user.setStatus(UserStatus.ACTIVE);
+		user = dao.saveUser(user);
+		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("User activated successfully").body(user).build());
 	}
 
 
