@@ -43,6 +43,8 @@ public class User
 //	@Column(unique = true)
 	private long phone;
 
+	private int otp;
+
 	// @Enumerated(EnumType.ORDINAL)
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
