@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalTime;
 
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/faculties")
 public class FacultyController {

@@ -13,6 +13,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 //http://localhost:8080/swagger-ui/index.html - documentation link
 
+
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/students")
 public class StudentController {

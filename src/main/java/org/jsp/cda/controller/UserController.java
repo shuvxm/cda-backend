@@ -5,16 +5,11 @@ import org.jsp.cda.utility.AuthOTP;
 import org.jsp.cda.utility.AuthUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.jsp.cda.service.UserService;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
