@@ -31,10 +31,20 @@ public class UserController {
         return userService.login(authUser);
     }
 
-    @PostMapping
+
+    @Operation(summary = "Create a new user",
+            description = "This API allows for the creation of a new user by accepting a User entity in the request body.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "User created successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+//            @ApiResponse(responseCode = "409", description = "User already exists"),
+//            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    @PostMapping("/users")
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         return userService.saveUser(user);
     }
+
 
     @GetMapping
     public ResponseEntity<?> findAllUsers() {
