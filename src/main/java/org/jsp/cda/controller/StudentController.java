@@ -23,19 +23,24 @@ public class StudentController {
     private StudentService studentService;
 
     @Operation(summary = "To Create the Student through user id", description = "This API will accept the request body of Student Entity and accept the user id to ")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "All"),
-    			@ApiResponse(responseCode = "200", description = "All")} )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Student created successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    } )
     @PostMapping("/{uid}")
     public ResponseEntity<?> saveStudent(@PathVariable int uid, Student student)
     {
         return studentService.saveStudent(uid,student);
     }
 
+
     @PostMapping(value = "/upload/{sid}")
     public ResponseEntity<?> uploadPhoto(@PathVariable int sid, @RequestParam MultipartFile file){
         return studentService.uploadPhoto(sid,file);
     }
 
+    @Operation(summary = "To find all the students", description = "This API will fetched all the students")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "")})
     @GetMapping
     public ResponseEntity<?> findAllStudents(){
         return studentService.findAllStudents();
