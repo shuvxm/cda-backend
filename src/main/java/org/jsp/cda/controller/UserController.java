@@ -1,5 +1,8 @@
 package org.jsp.cda.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.jsp.cda.entity.User;
 import org.jsp.cda.utility.AuthOTP;
 import org.jsp.cda.utility.AuthUser;
@@ -17,11 +20,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Operation(summary = "User Login",
+            description = "This API allows a user to log in by providing authentication credentials.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Login successful"),
+            @ApiResponse(responseCode = "400", description = "Invalid authentication credentials")
+    } )
     @PostMapping(value = "/login")
     public ResponseEntity<?> login(@RequestBody AuthUser authUser){
         return userService.login(authUser);
     }
-
 
     @PostMapping
     public ResponseEntity<?> saveUser(@RequestBody User user) {
