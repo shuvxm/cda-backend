@@ -45,7 +45,11 @@ public class UserController {
         return userService.saveUser(user);
     }
 
-
+    @Operation(summary = "To find all the users", description = "This API will fetched all the users")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fetched all users successfully"),
+            @ApiResponse(responseCode = "400", description = "No user found")
+    } )
     @GetMapping
     public ResponseEntity<?> findAllUsers() {
         return userService.findAllUsers();
