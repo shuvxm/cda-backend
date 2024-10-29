@@ -33,14 +33,16 @@ public class StudentController {
         return studentService.saveStudent(uid,student);
     }
 
-
     @PostMapping(value = "/upload/{sid}")
     public ResponseEntity<?> uploadPhoto(@PathVariable int sid, @RequestParam MultipartFile file){
         return studentService.uploadPhoto(sid,file);
     }
 
     @Operation(summary = "To find all the students", description = "This API will fetched all the students")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "")})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fetched all student successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    } )
     @GetMapping
     public ResponseEntity<?> findAllStudents(){
         return studentService.findAllStudents();
