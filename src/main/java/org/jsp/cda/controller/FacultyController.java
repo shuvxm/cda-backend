@@ -32,6 +32,11 @@ public class FacultyController {
         return facultyService.saveFaculty(faculty, uid);
     }
 
+    @Operation(summary = "To find Faculty through their id", description = "This API will fetched faculty by their id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fetched faculty successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    } )
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findFacultyById(@PathVariable int id){
         return facultyService.findFacultyById(id);
