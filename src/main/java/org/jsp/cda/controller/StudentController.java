@@ -48,7 +48,7 @@ public class StudentController {
         return studentService.findAllStudents();
     }
 
-    @Operation(summary = "To find Student through user id", description = "This API will fetched student by their id")
+    @Operation(summary = "To find Student through their id", description = "This API will fetched student by their id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Fetched student successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid input data")
