@@ -55,6 +55,11 @@ public class UserController {
         return userService.findAllUsers();
     }
 
+    @Operation(summary = "To find User through their id", description = "This API will fetched users by their id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fetched user successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    } )
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findUserById(@PathVariable int id) {
         return userService.findUserById(id);
