@@ -41,6 +41,12 @@ public class FacultyController {
     public ResponseEntity<?> findFacultyById(@PathVariable int id){
         return facultyService.findFacultyById(id);
     }
+
+    @Operation(summary = "To find all the faculty", description = "This API will fetched all the faculty")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fetched all faculty successfully"),
+            @ApiResponse(responseCode = "400", description = "No faculty found")
+    } )
     @GetMapping
     public ResponseEntity<?> findAllFaculties(){
         return facultyService.findAllFaculties();
