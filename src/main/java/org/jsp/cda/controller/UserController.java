@@ -64,7 +64,8 @@ public class UserController {
     public ResponseEntity<?> findUserById(@PathVariable int id) {
         return userService.findUserById(id);
     }
-    
+
+
     @PutMapping(value = "/{id}/student")
     public ResponseEntity<?> updateRoleToStudent(@PathVariable int id) {
     	return userService.updateRoleToStudent(id);

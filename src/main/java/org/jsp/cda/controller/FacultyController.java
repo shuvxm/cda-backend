@@ -1,6 +1,9 @@
 package org.jsp.cda.controller;
 
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.jsp.cda.entity.Faculty;
 
 import org.jsp.cda.service.FacultyService;
@@ -19,6 +22,11 @@ public class FacultyController {
     @Autowired
     private FacultyService facultyService;
 
+    @Operation(summary = "To Create the Faculty through user id", description = "This API will accept the request body of Faculty Entity and accept the user id to map ")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Faculty created successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    } )
     @PostMapping(value = "/{uid}")
     public ResponseEntity<?> saveFaculty(@RequestBody Faculty faculty, @PathVariable int uid) {
         return facultyService.saveFaculty(faculty, uid);
