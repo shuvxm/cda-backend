@@ -65,6 +65,11 @@ public class FacultyController {
         return facultyService.assignDepartmentToFaculty(fid, did);
     }
 
+    @Operation(summary = "To assign office hours to faculty", description = "This API will assign office hours to faculty")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Assigned office hours to faculty successfully"),
+            @ApiResponse(responseCode = "400", description = "No faculty found & department")
+    } )
     @PatchMapping("/officeHours/{fid}")
     public ResponseEntity<?> setOfficeHours(@PathVariable int fid, @RequestParam LocalTime officeHours){
         return facultyService.setOfficeHours(fid, officeHours);
