@@ -52,10 +52,10 @@ public class FacultyController {
         return facultyService.findAllFaculties();
     }
 
-    @Operation(summary = "To assign all the faculty", description = "This API will fetched all the faculty")
+    @Operation(summary = "To assign the department to faculty", description = "This API will assign the department to faculty")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Fetched all faculty successfully"),
-            @ApiResponse(responseCode = "400", description = "No faculty found")
+            @ApiResponse(responseCode = "200", description = "Assigned department to faculty successfully"),
+            @ApiResponse(responseCode = "400", description = "No faculty found & department")
     } )
     @PatchMapping(value = "/department/{fid}/{did}")
     public ResponseEntity<?> setDepartmentToFaculty(
