@@ -58,6 +58,11 @@ public class StudentController {
         return studentService.findStudentById(id);
     }
 
+    @Operation(summary = "To Assign department to the Student", description = "This API will assign the department to  student ")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Assigned department to student successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    } )
     @PatchMapping(value = "/department/{sid}/{did}")
     public ResponseEntity<?> setDepartmentToStudent(@PathVariable int sid, @PathVariable int did){
         return studentService.setDepartmentToStudent(sid,did);
