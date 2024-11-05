@@ -66,6 +66,11 @@ public class UserController {
     }
 
 
+    @Operation(summary = "To update Role to the student", description = "This API will fetched users by their id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fetched user successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    } )
     @PutMapping(value = "/{id}/student")
     public ResponseEntity<?> updateRoleToStudent(@PathVariable int id) {
     	return userService.updateRoleToStudent(id);
