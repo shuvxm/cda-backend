@@ -38,7 +38,12 @@ public class DepartmentController
 	{
 		return service.findAllDepartments();
 	}
-	
+
+	@Operation(summary = "To find all the Department ", description = "This API will fetched all the department ")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Department fetched successfully"),
+			@ApiResponse(responseCode = "400", description = "Invalid input data")
+	} )
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> findDepartmentsById(@PathVariable int id)
 	{
