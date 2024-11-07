@@ -30,7 +30,7 @@ public class DepartmentController
 
 	@Operation(summary = "To find all the Department ", description = "This API will fetched all the department ")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Department fetched successfully"),
+			@ApiResponse(responseCode = "200", description = "All Departments fetched successfully"),
 			@ApiResponse(responseCode = "400", description = "Invalid input data")
 	} )
 	@GetMapping
@@ -39,7 +39,7 @@ public class DepartmentController
 		return service.findAllDepartments();
 	}
 
-	@Operation(summary = "To find all the Department ", description = "This API will fetched all the department ")
+	@Operation(summary = "To find Department by their id ", description = "This API will fetched department by their id ")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Department fetched successfully"),
 			@ApiResponse(responseCode = "400", description = "Invalid input data")
