@@ -45,6 +45,12 @@ public class CourseController {
     {
         return courseService.findCourseById(id);
     }
+
+    @Operation(summary = "To Find all the Course ", description = "This API will find all the Course")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "All Courses fetched successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    })
     @GetMapping
     public ResponseEntity<?> findAllCourses()
     {
