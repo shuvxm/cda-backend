@@ -56,6 +56,12 @@ public class CourseController {
     {
         return courseService.findAllCourses();
     }
+
+    @Operation(summary = "To update the Course by their id ", description = "This API will update the Course by their id ")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Course updated successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    })
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> updateCourseById(@PathVariable int id, @RequestBody Course course)
     {
