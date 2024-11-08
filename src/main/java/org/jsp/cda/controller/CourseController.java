@@ -1,5 +1,8 @@
 package org.jsp.cda.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.jsp.cda.entity.Course;
 import org.jsp.cda.entity.Faculty;
 import org.jsp.cda.repository.CourseRepository;
@@ -22,7 +25,11 @@ public class CourseController {
     @Autowired
     private FacultyRepository facultyRepository;
 
-
+    @Operation(summary = "To Create the Course ", description = "This API will accept the request body of course Entity ")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Course created successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    })
     @PostMapping
     public ResponseEntity<?> saveCourse(@RequestBody Course course)
     {
