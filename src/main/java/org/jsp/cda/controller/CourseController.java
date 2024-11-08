@@ -35,6 +35,11 @@ public class CourseController {
     {
         return courseService.saveCourse(course);
     }
+    @Operation(summary = "To Find the Course by their id ", description = "This API will find the Course by their id ")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Course fetched successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    })
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findCourseById(@PathVariable int id)
     {
