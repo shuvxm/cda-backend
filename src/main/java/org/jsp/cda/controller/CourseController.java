@@ -68,6 +68,7 @@ public class CourseController {
         return courseService.updateCourseById(id,course);
     }
 
+
     @PatchMapping(value = "/faculty/{cid}/{fid}")
     public ResponseEntity<?> setFacultyToCourse(@PathVariable int cid, @PathVariable int fid)
     {
