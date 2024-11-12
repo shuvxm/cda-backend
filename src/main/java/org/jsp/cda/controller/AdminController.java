@@ -19,7 +19,7 @@ public class AdminController {
 
     @Operation(summary = "To Create the admin ", description = "This API will accept the request body of Admin Entity ")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Course created successfully"),
+            @ApiResponse(responseCode = "200", description = "Admin created successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid input data")
     })
     @PostMapping
