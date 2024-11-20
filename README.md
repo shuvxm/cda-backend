@@ -15,7 +15,7 @@ A Spring Boot application providing a backend solution for managing college dire
 ● Language: Java 17+
 
 ## 🚀 Getting Started
-✅ Prerequisites
+✅ Prerequisites  
 Ensure you have the following installed:
 
 ☕ Java Development Kit (JDK): Version 17 or above  
