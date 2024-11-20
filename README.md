@@ -1,5 +1,5 @@
 # 🎓 College Directory Application - Backend
-A Spring Boot application providing a backend solution for managing college directory information. It includes a RESTful API with detailed Swagger documentation.
+A Spring Boot application providing a backend solution for managing college directory information. It includes a RESTFUL API with detailed Swagger documentation.
 
 ## ✨ Features
 
