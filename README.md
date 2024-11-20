@@ -4,7 +4,7 @@ A Spring Boot application providing a backend solution for managing college dire
 ## ✨ Features
 
 ● 🏫 CRUD Operations: Manage colleges, departments, students, and faculties effortlessly.  
-● 🔗 RESTful APIs: Standardized endpoints for seamless integration. 
+● 🔗 RESTful APIs: Standardized endpoints for seamless integration.  
 ● 📜 Swagger UI: Interactive documentation for easy API testing.  
 
 ## 🛠️ Tech Stack
@@ -26,14 +26,14 @@ Ensure you have the following installed:
 ## 📥 Installation
 1. Clone the Repository:
 
-```bash
+```java
 git clone https://github.com/username/college-directory-backend.git
 cd college-directory-backend
 ```
 2. Configure the Application:
 Update the application.properties or application.yml in src/main/resources:
 
-```bash
+```java
 spring.datasource.url=jdbc:mysql://localhost:3306/college_db
 spring.datasource.username=your_db_username
 spring.datasource.password=your_db_password
@@ -41,7 +41,7 @@ spring.datasource.password=your_db_password
 ```
 3. Access the Swagger UI:  
 >Open your browser and navigate to:
-```bash
+```java
 👉 http://localhost:8080/swagger-ui.html
 ```
 
