@@ -27,7 +27,7 @@ Ensure you have the following installed:
 1. Clone the Repository:
 
 ```java
-git clone https://github.com/username/college-directory-backend.git
+git clone https://github.com/shuvxm/college-directory-backend.git
 cd college-directory-backend
 ```
 2. Configure the Application:
