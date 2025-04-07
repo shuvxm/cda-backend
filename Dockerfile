@@ -1,14 +1,12 @@
-# Use official JDK 17 base image
-FROM eclipse-temurin:17-jdk-alpine
-
-# Set the working directory
+# Step 1: Build Stage
+FROM maven:3.9.4-eclipse-temurin-17 AS build
 WORKDIR /app
-
-# Copy everything to the container
 COPY . .
+RUN mvn clean package -DskipTests
 
-# Package the application using Maven wrapper
-RUN ./mvnw clean package -DskipTests
-
-# Run the generated jar file
-CMD ["java", "-jar", "target/cda-backend-0.0.1-SNAPSHOT.jar"]
+# Step 2: Run Stage
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
