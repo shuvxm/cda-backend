@@ -1,10 +1,6 @@
 package org.jsp.cda.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -22,7 +18,8 @@ public class Enrollment
 	@ManyToOne
 	private Student student;
 	
-	@ManyToOne
+//	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Course course;
 
 
