@@ -60,10 +60,20 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
 //        if(enrollments.isEmpty())
 //            throw NoStudentFoundException.builder().message("No any enrollment found by student.").build();
-        if(enrollments.isEmpty()) {
+//        if(enrollments.isEmpty()) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+//                    .body(ResponseStructure.builder().status(404).message("No enrollments found").body(null).build());
+//        }
+        if (enrollments == null || enrollments.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(ResponseStructure.builder().status(404).message("No enrollments found").body(null).build());
+                    .body(ResponseStructure.builder()
+                            .status(404)
+                            .message("No enrollments found")
+                            .body(null)
+                            .build());
         }
+
+        System.out.println("Enrollments for student ID " + sid + ": " + enrollments);
 
         return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Enrollment found by this id.").body(enrollments).build());
     }
