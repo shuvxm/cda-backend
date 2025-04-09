@@ -79,5 +79,11 @@ public class CourseController {
     public ResponseEntity<?> setDepartmentToCourse(@PathVariable int cid, @PathVariable int did){
         return courseService.setDepartmentToCourse(cid,did);
     }
+    // find course by student id
+//    @GetMapping(value = "/student/{sid}" )
+//    public ResponseEntity<?> findCourseByStudentId(@PathVariable int sid)
+//    {
+//        return courseService.findCourseByStudentId(sid);
+//    }
 
 }
