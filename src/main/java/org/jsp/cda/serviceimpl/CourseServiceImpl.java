@@ -3,9 +3,11 @@ package org.jsp.cda.serviceimpl;
 import org.jsp.cda.dao.CourseDao;
 import org.jsp.cda.dao.DepartmentDao;
 import org.jsp.cda.dao.FacultyDao;
+import org.jsp.cda.dao.StudentDao;
 import org.jsp.cda.entity.Course;
 import org.jsp.cda.entity.Department;
 import org.jsp.cda.entity.Faculty;
+import org.jsp.cda.entity.Student;
 import org.jsp.cda.exceptionclasses.InvalidCourseIdException;
 import org.jsp.cda.exceptionclasses.NoCoursesFoundException;
 import org.jsp.cda.responsestructure.ResponseStructure;
@@ -29,6 +31,9 @@ public class CourseServiceImpl implements CourseService
 
     @Autowired
     private DepartmentDao departmentDao;
+
+    @Autowired
+    private StudentDao studentDao;
 
 
 
@@ -99,4 +104,13 @@ public class CourseServiceImpl implements CourseService
         Course saveCourse = courseDao.saveCourse(course);
         return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Department has set to Course successfully.").body(saveCourse).build());
     }
+
+//    @Override
+//    public ResponseEntity<?> findCourseByStudentId(int sid) {
+//        Optional<Student> optional = studentDao.findStudentById(sid);
+//        courseDao.findCourseById()
+//        if(optional.isEmpty())
+//            throw NoCoursesFoundException.builder().message("No student found.").build();
+//        return null;
+//    }
 }
