@@ -58,8 +58,8 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
         List<Enrollment> enrollments = enrollmentDao.findEnrollmentsByStudentId(sid);
 
-        if(enrollments.isEmpty())
-            throw NoStudentFoundException.builder().message("No any enrollment found by student.").build();
+//        if(enrollments.isEmpty())
+//            throw NoStudentFoundException.builder().message("No any enrollment found by student.").build();
 
         return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Enrollment found by this id.").body(enrollments).build());
     }

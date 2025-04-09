@@ -23,6 +23,7 @@ public class Student
 	@OneToOne
 	@MapsId
 	private User user;
+
 	@ManyToOne
 	private Department  department;
 

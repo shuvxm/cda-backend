@@ -22,7 +22,7 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @Operation(summary = "To Create the Student through user id", description = "This API will accept the request body of Student Entity and accept the user id to ")
+    @Operation(summary = "To Create the Student through user id", description = "This API will accept the request body of Student Entity and accept the user id to create student ")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Student created successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid input data")
