@@ -32,7 +32,7 @@ public class Faculty
 	private Department department;
 	
 	private LocalTime officeHours;
-	
+
 	
 
 }
