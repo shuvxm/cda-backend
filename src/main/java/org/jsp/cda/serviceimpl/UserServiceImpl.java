@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.jsp.cda.dao.UserDao;
 import org.jsp.cda.entity.User;
 import org.jsp.cda.exceptionclasses.InvalidCredentialsException;
+import org.jsp.cda.repository.UserRepository;
 import org.jsp.cda.responsestructure.ResponseStructure;
 import org.jsp.cda.utility.AuthOTP;
 import org.jsp.cda.utility.AuthUser;
@@ -90,6 +91,20 @@ public class UserServiceImpl implements UserService {
 		user.setStatus(UserStatus.ACTIVE);
 		user = dao.saveUser(user);
 		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("User activated successfully").body(user).build());
+	}
+
+	@Autowired
+	private UserRepository userRepository;
+
+	// Register user method
+	public User registerUser(User user) {
+		// Example logic: Check if the email already exists
+		if (userRepository.existsByEmail(user.getEmail())) {
+			throw new RuntimeException("Email already registered");
+		}
+
+		// Save the user to the database
+		return userRepository.save(user);
 	}
 
 

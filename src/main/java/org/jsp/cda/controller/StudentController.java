@@ -14,7 +14,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 //http://localhost:8080/swagger-ui/index.html - documentation link
 
 
-@CrossOrigin
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/students")
 public class StudentController {
@@ -28,7 +28,7 @@ public class StudentController {
             @ApiResponse(responseCode = "400", description = "Invalid input data")
     } )
     @PostMapping("/{uid}")
-    public ResponseEntity<?> saveStudent(@PathVariable int uid, Student student)
+    public ResponseEntity<?> saveStudent(@PathVariable int uid, @RequestBody Student student)
     {
         return studentService.saveStudent(uid,student);
     }
@@ -68,7 +68,16 @@ public class StudentController {
         return studentService.setDepartmentToStudent(sid,did);
     }
 
-    //
+    // search
+    @Operation(summary = "To search student by their name", description = "This API will search student by their name")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fetched student successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    } )
+    @GetMapping(value = "/search/{name}")
+    public ResponseEntity<?> searchStudentByName(@PathVariable String name){
+        return studentService.searchStudentByName(name);
+    }
 
 
 }

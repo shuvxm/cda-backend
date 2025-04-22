@@ -14,6 +14,8 @@ public interface UserService {
     ResponseEntity<?> login(AuthUser authUser);
 
     ResponseEntity<?> verifyOTP(AuthOTP authOTP);
+
+    User registerUser(User user);
 }
 
 

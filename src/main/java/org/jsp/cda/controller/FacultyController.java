@@ -74,6 +74,16 @@ public class FacultyController {
     public ResponseEntity<?> setOfficeHours(@PathVariable int fid, @RequestParam LocalTime officeHours){
         return facultyService.setOfficeHours(fid, officeHours);
     }
+    // search faculty
+    @Operation(summary = "To search faculty by name", description = "This API will search faculty by name")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Faculty found successfully"),
+            @ApiResponse(responseCode = "400", description = "No faculty found")
+    } )
+    @GetMapping(value = "/search")
+    public ResponseEntity<?> searchFaculty(@RequestParam String name){
+        return facultyService.searchFaculty(name);
+    }
 }
 
 

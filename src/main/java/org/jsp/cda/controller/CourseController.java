@@ -35,6 +35,7 @@ public class CourseController {
     {
         return courseService.saveCourse(course);
     }
+
     @Operation(summary = "To Find the Course by their id ", description = "This API will find the Course by their id ")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Course fetched successfully"),
@@ -70,8 +71,7 @@ public class CourseController {
 
 
     @PatchMapping(value = "/faculty/{cid}/{fid}")
-    public ResponseEntity<?> setFacultyToCourse(@PathVariable int cid, @PathVariable int fid)
-    {
+    public ResponseEntity<?> setFacultyToCourse(@PathVariable int cid, @PathVariable int fid) {
         return courseService.setFacultyToCourse(cid,fid);
     }
 

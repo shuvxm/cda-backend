@@ -99,5 +99,15 @@ public class StudentServiceImpl implements StudentService {
         return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("Profile Photo uploaded successfully").body(student).build());
     }
 
+    @Override
+    public ResponseEntity<?> searchStudentByName(String name) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<?> getAllStudents() {
+        return null;
+    }
+
 
 }

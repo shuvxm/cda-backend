@@ -67,6 +67,7 @@ public class FacultyServiceImpl implements FacultyService {
         return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("All faculties found successfully.").body(faculties).build());
     }
 
+
     @Override
     public ResponseEntity<?> assignDepartmentToFaculty(int fid, int did) {
 
@@ -110,5 +111,15 @@ public class FacultyServiceImpl implements FacultyService {
         return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value()).message("office hours has updated to faculty").body(faculty).build());
     }
 
+
+    @Override
+    public ResponseEntity<?> searchFaculty(String name) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<?> getAllFaculty() {
+        return null;
+    }
 
 }

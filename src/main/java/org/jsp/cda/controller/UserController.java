@@ -20,16 +20,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Operation(summary = "User Login",
-            description = "This API allows a user to log in by providing authentication credentials.")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Login successful"),
-            @ApiResponse(responseCode = "400", description = "Invalid authentication credentials")
-    } )
-    @PostMapping(value = "/login")
-    public ResponseEntity<?> login(@RequestBody AuthUser authUser){
-        return userService.login(authUser);
-    }
+//    @Operation(summary = "User Login",
+//            description = "This API allows a user to log in by providing authentication credentials.")
+//    @ApiResponses(value = {
+//            @ApiResponse(responseCode = "200", description = "Login successful"),
+//            @ApiResponse(responseCode = "400", description = "Invalid authentication credentials")
+//    } )
+//    @PostMapping(value = "/login")
+//    public ResponseEntity<?> login(@RequestBody AuthUser authUser){
+//        return userService.login(authUser);
+//    }
 
 
     @Operation(summary = "Create a new user",
@@ -40,7 +40,7 @@ public class UserController {
 //            @ApiResponse(responseCode = "409", description = "User already exists"),
 //            @ApiResponse(responseCode = "500", description = "Internal server error")
     })
-    @PostMapping("/users")
+    @PostMapping
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         return userService.saveUser(user);
     }

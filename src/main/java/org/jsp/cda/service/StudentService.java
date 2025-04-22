@@ -16,4 +16,7 @@ public interface StudentService {
 
     ResponseEntity<?> uploadPhoto(int sid, MultipartFile file);
 
+    ResponseEntity<?> searchStudentByName(String name);
+
+    ResponseEntity<?> getAllStudents();
 }
